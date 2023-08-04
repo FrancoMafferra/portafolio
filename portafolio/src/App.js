@@ -10,8 +10,8 @@ import {
   BrowserRouter as Router,
   NavLink } from 'react-router-dom'
 import AnimatedRoutes from "./componentes/animetedRoutes/AnimetedRoutes";
-//import Logo1 from './componentes/images/logoblack.jpge'
-//import Logo2 from './componentes/images/logwhite.jpge'
+import Logo1 from './images/sodapdf-converted.png'
+import Logo2 from './images/sodapdf-converte.png'
 
 export const ThemeContext = createContext(null)
 
@@ -31,9 +31,9 @@ function App() {
         <div className="App" id={theme}>
           <nav className="navegador">
 
-            {/*<div className="leftSide">
+            <div className="leftSide">
               {theme === 'dark' ? <img src={Logo1} alt='' style={{height:'80px'}} /> : <img src={Logo2} alt='' style={{height:'80px'}} />}
-            </div>*/}
+            </div>
 
             <div className="rightSide">
 
