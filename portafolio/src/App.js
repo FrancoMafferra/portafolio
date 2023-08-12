@@ -1,75 +1,26 @@
-//para utilizar routing hacer antes en el proyecto npm install react-router-dom
-// para el switch npm install react-switch
-// tambien descargamos un framer para la animacion de elementos npm install framer motion
-import React, { createContext, useState } from "react";
-import ReactSwitch from "react-switch";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import './App.css'
-import {
-  BrowserRouter as Router,
-  NavLink } from 'react-router-dom'
-import AnimatedRoutes from "./componentes/animetedRoutes/AnimetedRoutes";
-import Logo1 from './images/sodapdf-converted.png'
-import Logo2 from './images/sodapdf-converte.png'
+import React from 'react';
+// components
+import Banner from './components/Banner';
+import Header from './components/Header';
+import Nav from './components/Nav';
+import About from './components/About';
+import Services from './components/Services';
+import Work from './components/Work';
+import Contact from './components/Contact';
 
-export const ThemeContext = createContext(null)
-
-function App() {
-  
-  const [theme, setTheme] = useState('dark');
-  const [showLinks, setShowLinks] = useState(false);
-
-
-  const ToggleTheme = () => {
-    setTheme((curr) => (curr === 'light' ? 'dark' : 'light'))
-  }
-  
+const App = () => {
   return (
-    <Router>
-      <ThemeContext.Provider value={{ theme, ToggleTheme }}>
-        <div className="App" id={theme}>
-          <nav className="navegador">
-
-            <div className="leftSide">
-              {theme === 'dark' ? <img src={Logo1} alt='' style={{height:'80px'}} /> : <img src={Logo2} alt='' style={{height:'80px'}} />}
-            </div>
-
-            <div className="rightSide">
-
-              <div className="botones" id={showLinks ? 'hidden' : ''}>
-                <NavLink className="boton" onClick={() => showLinks ? setShowLinks(false): ''} to='/' activeclassname='active'>Home</NavLink>
-                <NavLink className="boton" onClick={() => showLinks ? setShowLinks(false): ''} to='/about' activeclassname='active'>About</NavLink>
-                <NavLink className="boton" onClick={() => showLinks ? setShowLinks(false): ''} to='/projects' activeclassname='active'>Projects</NavLink>
-                <NavLink className="boton" onClick={() => showLinks ? setShowLinks(false): ''} to='/contact' activeclassname='active'>Contact</NavLink>
-
-              </div>
-                <hr/>
-              <div className="boton-label-sw">
-                <ReactSwitch
-                  onChange={ToggleTheme} checked={theme === 'dark'} />
-                  
-                  <label>
-                    {theme === 'light' ? 'Light Mode' : 'Dark Mode'}
-                  </label>
-
-                <FontAwesomeIcon
-                  icon={faBars}
-                  className="material-symbols-outlined fa-2x"
-                  onClick={() => setShowLinks(!showLinks)}
-                />
-
-              </div>
-            </div>
-
-          </nav>
-
-          <AnimatedRoutes tema={theme} />
-
-        </div>
-      </ThemeContext.Provider>
-    </Router>
+    <div className='bg-site bg-no-repeat bg-cover overflow-hidden'>
+      <Header />
+      <Banner />
+      <Nav />
+      <About />
+      <Services />
+      <Work />
+      <Contact />
+      {/* <div className='h-[4000px]'></div> */}
+    </div>
   );
-}
+};
 
 export default App;
